@@ -1,0 +1,26 @@
+# Claude Mimic Gateway 配置文件示例
+# 请复制此文件为 config.yaml 并填入实际的配置值
+
+# 上游服务配置
+upstream:
+  # Claude API的上游完整地址，包含完整路径
+  url: "https://xxx.com/v1/messages?beta=true"
+  # 上游API密钥，请替换为实际的Claude API密钥
+  key: "sk-ant-api-key"
+
+# 服务器配置
+server:
+  # 代理服务监听的端口
+  port: 8080
+
+# 认证配置
+auth:
+  # 下游客户端访问时需要提供的验证密钥
+  # 客户端需要在Authorization头或x-api-key头中提供此密钥
+  key: "your-auth-key-here"
+
+# 网关配置
+gateway:
+  # 固定用户ID，用于伪装成Claude Code请求
+  # 如果你不清楚要填写什么，就不要填写，系统会自动生成
+  user_id: ""
