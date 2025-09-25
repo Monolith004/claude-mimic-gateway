@@ -41,6 +41,7 @@
 
 **编译为可执行文件**
 ```bash
+mkdir build
 cd src
 go build -o claude-mimic-gateway main.go
 ```
@@ -48,13 +49,16 @@ go build -o claude-mimic-gateway main.go
 **交叉编译**
 ```bash
 # Windows 64位
-GOOS=windows GOARCH=amd64 go build -o claude-mimic-gateway.exe main.go
+GOOS=windows GOARCH=amd64 go build -o ../build/claude-mimic-gateway.exe main.go
 
 # Linux 64位
-GOOS=linux GOARCH=amd64 go build -o claude-mimic-gateway main.go
+GOOS=linux GOARCH=amd64 go build -o ../build/claude-mimic-gateway-linux-amd64 main.go
+
+# Windows编译Linux 64位时
+sh -c "GOOS=linux GOARCH=amd64 go build -o ../build/claude-mimic-gateway-linux-amd64 main.go"
 
 # macOS 64位
-GOOS=darwin GOARCH=amd64 go build -o claude-mimic-gateway main.go
+GOOS=darwin GOARCH=amd64 go build -o ../build/claude-mimic-gateway main.go
 ```
 
 ### Docker 构建（可选）

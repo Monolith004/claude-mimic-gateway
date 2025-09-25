@@ -234,9 +234,10 @@ func TransformRequestBody(body []byte) ([]byte, error) {
 		return nil, fmt.Errorf("处理系统消息失败: %v", err)
 	}
 
-	// 阶段6: 处理temperature和top_p范围
+	// 阶段6: 处理temperature、top_p、max_tokens范围
 	processlimit(originalBody,"temperature",0,1)
 	processlimit(originalBody,"top_p",0,1)
+	processlimit(originalBody,"max_tokens",4096,64000)
 
 	// 重新序列化
 	transformedBody, err := json.Marshal(originalBody)
